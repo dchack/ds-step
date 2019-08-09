@@ -79,6 +79,17 @@ public class SingleLinkedList<T> {
         }
     }
 
+    public boolean contains(T value){
+        Node f = first;
+        while(f != null){
+            if(f.data == value){
+                return true;
+            }
+            f = f.next;
+        }
+        return false;
+    }
+
     public void printAll() {
         Node p = first;
         while (p != null) {
@@ -114,6 +125,8 @@ public class SingleLinkedList<T> {
         singleLinkedList.printAll();
         singleLinkedList.removeAllByValue("1");
         singleLinkedList.printAll();
+
+        System.out.println(singleLinkedList.contains("4"));
     }
 
 }
