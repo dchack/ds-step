@@ -1,8 +1,8 @@
 package com.hope.ds.crp.second;
 
 
-public abstract class Handler {
+public interface Handler {
 
-    abstract boolean handle(Request request);
+     boolean handle(Request request);
 
 }

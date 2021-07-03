@@ -15,7 +15,8 @@ public abstract class Handler {
 
     public void handle(Request request){
         boolean handled = doHandle(request);
-        if(handled && this.successor != null){
+        // 如果链上某个处理器能够处理这个请求，那就不会继续往下传递请求
+        if(!handled && this.successor != null){
             successor.handle(request);
         }
     }

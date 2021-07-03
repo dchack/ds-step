@@ -1,6 +1,6 @@
 package com.hope.ds.crp.second;
 
-public class AHandler implements Handler{
+public class BHandler implements Handler{
 
     public boolean handle(Request request) {
 
