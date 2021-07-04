@@ -1,4 +1,4 @@
-package com.hope.ds.crp.second;
+package com.hope.ds.crp.four;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,7 @@ public class HandlerChain {
 
     public void handle(Request request){
         for (Handler handler : handlerList) {
-            boolean handle = handler.handle(request);
-            // 如果链上某个处理器能够处理这个请求，那就不会继续往下传递请求
-            if(handle){
-                break;
-            }
+            handler.handle(request);
         }
     }
 
