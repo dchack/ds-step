@@ -8,8 +8,8 @@ public class AHandler extends Handler{
         boolean handled = false;
 
         // do something
-        if(handled && successor != null){
-            successor.handle(request);
+        if(handled && next != null){
+            next.handle(request);
         }
         // do something
     }

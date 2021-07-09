@@ -7,17 +7,17 @@ import com.hope.ds.crp.first.Request;
  */
 public abstract class Handler {
 
-    protected Handler successor = null;
+    protected Handler next = null;
 
-    public void setSuccessor(Handler successor) {
-        this.successor = successor;
+    public void setNext(Handler next) {
+        this.next = next;
     }
 
     public void handle(Request request){
         boolean handled = doHandle(request);
         // 如果链上某个处理器能够处理这个请求，那就不会继续往下传递请求
-        if(!handled && this.successor != null){
-            successor.handle(request);
+        if(!handled && this.next != null){
+            next.handle(request);
         }
     }
 

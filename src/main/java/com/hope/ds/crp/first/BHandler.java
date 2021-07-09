@@ -7,8 +7,8 @@ public class BHandler extends Handler{
         boolean handled = false;
 
         // do something
-        if(successor != null){
-            successor.handle(request);
+        if(next != null){
+            next.handle(request);
         }
         // do something
     }

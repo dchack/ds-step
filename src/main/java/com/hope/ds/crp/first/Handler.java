@@ -2,10 +2,10 @@ package com.hope.ds.crp.first;
 
 public abstract class Handler {
 
-    protected Handler successor;
+    protected Handler next;
 
-    public void setSuccessor(Handler successor) {
-        this.successor = successor;
+    public void setNext(Handler next) {
+        this.next = next;
     }
 
     abstract void handle(Request request);
