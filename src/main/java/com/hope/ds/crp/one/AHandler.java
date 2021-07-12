@@ -1,4 +1,4 @@
-package com.hope.ds.crp.first;
+package com.hope.ds.crp.one;
 
 public class AHandler extends Handler{
 
@@ -8,7 +8,8 @@ public class AHandler extends Handler{
         boolean handled = false;
 
         // do something
-        if(handled && next != null){
+        if(!handled && next != null){
+            // 执行下一个
             next.handle(request);
         }
         // do something

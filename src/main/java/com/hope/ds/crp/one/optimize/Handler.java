@@ -1,6 +1,6 @@
-package com.hope.ds.crp.first.optimize;
+package com.hope.ds.crp.one.optimize;
 
-import com.hope.ds.crp.first.Request;
+import com.hope.ds.crp.one.Request;
 
 /**
  * 优化点：每个Handler不需要调用handle方法来链接整个链表

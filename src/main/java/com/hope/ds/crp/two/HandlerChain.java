@@ -1,4 +1,4 @@
-package com.hope.ds.crp.second;
+package com.hope.ds.crp.two;
 
 import java.util.ArrayList;
 import java.util.List;

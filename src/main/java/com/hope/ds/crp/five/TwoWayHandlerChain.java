@@ -21,5 +21,4 @@ public class TwoWayHandlerChain {
             servlet.service(request, response);
         }
     }
-
 }
