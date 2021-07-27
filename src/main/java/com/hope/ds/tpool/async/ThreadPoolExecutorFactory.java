@@ -25,7 +25,7 @@ public class ThreadPoolExecutorFactory {
         return hashMap.get(name);
     }
 
-    ThreadPoolExecutor create(String name, int corePoolSize, int maxPoolSize){
+    public ThreadPoolExecutor create(String name, int corePoolSize, int maxPoolSize){
         return create(name, corePoolSize, maxPoolSize,
                 keepAliveSeconds, new LinkedBlockingQueue<>(), new DefaultRejectedExecutionHandler());
     }

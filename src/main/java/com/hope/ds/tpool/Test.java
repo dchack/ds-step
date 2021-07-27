@@ -15,24 +15,23 @@ public class Test {
                 e.printStackTrace();
             }
         });
-        asyncExecutor.execute(() -> {
-            System.out.println("test");
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-
-        asyncExecutor.execute(() -> {
-            System.out.println("test");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-
+//        asyncExecutor.execute(() -> {
+//            System.out.println("test");
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//
+//        asyncExecutor.execute(() -> {
+//            System.out.println("test");
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        });
 
     }
 }
