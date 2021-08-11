@@ -1,6 +1,8 @@
 package com.hope.ds.tpool.async;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.*;
 
 public class AsyncExecutor {
@@ -36,21 +38,49 @@ public class AsyncExecutor {
     }
 
     /**
-     * 阻塞异步执行
-     * @param tasks
-     * @param threadPoolExecutor
+     * 阻塞异步执行，多个任务并行执行，等待全部任务完成后再继续
+     * 任务最耗时任务超过duration，就会进行全部任务的cancel操作，但不保证任务能被cancel
+     *
+     * @param tasks              任务集
+     * @param threadPoolExecutor 自定义线程池，线程池隔离
+     * @param duration           秒单位，总耗时超时时间
      */
-    public void blockedExecute(Collection<Callable> tasks, ThreadPoolExecutor threadPoolExecutor, int duration){
+    public void blockedExecute(Collection<Callable> tasks, ThreadPoolExecutor threadPoolExecutor, long duration) {
         CompletionService completionService = new ExecutorCompletionService(threadPoolExecutor);
-        for(Callable task : tasks){
-            completionService.submit(task);
+        List<Future> list = new ArrayList<>(tasks.size());
+        for (Callable task : tasks) {
+            list.add(completionService.submit(task));
         }
+        long start = System.nanoTime();
+        long timeout = duration * 1000 * 1000 * 1000;
         for (int i = 0; i < tasks.size(); i++) {
             try {
-                completionService.poll(duration, TimeUnit.SECONDS);
+                if (completionService.poll(timeout, TimeUnit.NANOSECONDS) == null) {
+                    // log
+                    cancelTasks(list);
+                    break;
+                }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                // log
+                cancelTasks(list);
+            } catch (Exception e) {
+                // log
+            } finally {
+                long expend = System.nanoTime() - start;
+                start = System.nanoTime();
+                timeout = timeout - expend;
             }
+        }
+    }
+
+    /**
+     * 逐个尝试取消任务
+     *
+     * @param list
+     */
+    private static void cancelTasks(List<Future> list) {
+        for (Future future : list) {
+            future.cancel(true);
         }
     }
 
