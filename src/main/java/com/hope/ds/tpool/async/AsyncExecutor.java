@@ -23,7 +23,7 @@ public class AsyncExecutor {
      * @param task 任务
      */
     public void execute(Runnable task){
-        defaultThreadPoolExecutor.submit(task);
+        defaultThreadPoolExecutor.execute(task);
         System.out.printf("active count:"+defaultThreadPoolExecutor.getActiveCount());
     }
 
@@ -33,7 +33,7 @@ public class AsyncExecutor {
      */
     public void execute(Collection<Runnable> tasks){
         for(Runnable task : tasks){
-            defaultThreadPoolExecutor.submit(task);
+            defaultThreadPoolExecutor.execute(task);
         }
     }
 

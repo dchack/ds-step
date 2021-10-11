@@ -7,14 +7,10 @@ public class Test {
 
     public static void main(String[] args) {
         AsyncExecutor asyncExecutor = new AsyncExecutor();
-        asyncExecutor.execute(() -> {
-            System.out.println("test");
-            try {
-                Thread.sleep(1001);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
+        asyncExecutor.execute(() ->  get((Long) new Object()));
+
+
+
 //        asyncExecutor.execute(() -> {
 //            System.out.println("test");
 //            try {
@@ -33,5 +29,9 @@ public class Test {
 //            }
 //        });
 
+    }
+
+    public static void get(long t){
+        System.out.printf("---"+t);
     }
 }
