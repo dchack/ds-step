@@ -3,7 +3,7 @@ package com.hope.ds.thread.cas.spinlock;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * @author dongchao
+ * @author hopehack
  */
 public class TTASLock {
 
