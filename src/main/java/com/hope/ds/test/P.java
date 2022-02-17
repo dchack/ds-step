@@ -8,7 +8,7 @@ import tech.spiro.addrparser.parser.LocationParserEngine;
 import tech.spiro.addrparser.parser.ParserEngineException;
 
 /**
- * @author dongchao
+ * @author hopehack
  * @description: TODO
  * @date 2021/8/14 10:42 下午
  */
@@ -22,7 +22,7 @@ public class P {
 //        System.out.printf("result : "+r);
 
         // china-region.json文件作为基础数据
-        RegionDataInput regionDataInput = new JSONFileRegionDataInput("/Users/dongchao/Downloads/china-region.json");
+        RegionDataInput regionDataInput = new JSONFileRegionDataInput("/Users/hopehack/Downloads/china-region.json");
 
         // 创建并初始化位置解析引擎，一般配置为全局单例
         LocationParserEngine engine = new LocationParserEngine(regionDataInput);
