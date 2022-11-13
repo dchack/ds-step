@@ -77,6 +77,7 @@ public class LogAnalysis {
         }
 
 
+
         else {
             count++;
         }
