@@ -1,9 +1,7 @@
 package com.hope.ds.work;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class LogAnalysis {
 
@@ -22,10 +20,11 @@ public class LogAnalysis {
         }
 
         PriorityQueue<Item> priorityQueue = new PriorityQueue<>();
+//        List<Item> sortList = new ArrayList<>(100000);
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             priorityQueue.add(new Item(entry.getKey(), entry.getValue()));
         }
-
+//        Collections.sort(sortList);
         File resultFile = new File("/Users/dongchao/dc/desk/result.text");
         resultFile.delete();
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultFile)));
@@ -36,6 +35,13 @@ public class LogAnalysis {
             writer.newLine();
             writer.flush();
         }
+
+//        for (Item item : sortList) {
+//            writer.write(item.getCount() + "||" + item.getUrl());
+//            writer.newLine();
+//            writer.flush();
+//        }
+
 
         System.out.printf("");
 
@@ -121,7 +127,10 @@ public class LogAnalysis {
 
         @Override
         public int compareTo(Item o) {
-            return this.getCount() > o.getCount()? 1:0;
+            if (this.getCount() == o.getCount()) {
+                return 0;
+            }
+            return this.getCount() > o.getCount()? 1:-1;
         }
     }
 
