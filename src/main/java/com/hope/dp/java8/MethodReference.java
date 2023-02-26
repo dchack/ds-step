@@ -1,6 +1,10 @@
 package com.hope.dp.java8;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
@@ -29,6 +33,38 @@ public class MethodReference {
     private static void predicateTest(String s, Predicate<String> predicate) {
         if (predicate.test(s)) {
             System.out.printf("" + "test ok");
+        }
+    }
+
+
+    private void streamTest() {
+        // Optional
+        String[] menu = new String[]{"fish", "bread", "beef"};
+        Optional<String> optional = Arrays.stream(menu).filter("fish" :: equals).findAny();
+        String dish = optional.orElse("default");
+
+        List<Dish> menus = new ArrayList<>();
+        menus.add(new Dish("fish", 1));
+        menus.add(new Dish("bread", 2));
+        menus.add(new Dish("beef", 4));
+        Integer sum = menus.stream().map(Dish :: getPrice).reduce(0, Integer::sum);
+    }
+
+    class Dish {
+        public Dish(String name, Integer price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        String name;
+        Integer price;
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getPrice() {
+            return price;
         }
     }
 }
